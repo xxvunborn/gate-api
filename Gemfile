@@ -22,6 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'annotate', require: false
 #Use serializers for return json
 gem 'active_model_serializers'
+gem 'has_secure_token'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
