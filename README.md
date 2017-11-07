@@ -186,7 +186,8 @@ POST    /api/v1/gates/:gate_id/keys
 		"user_id": 1,
 		"expired_at": "10/12/2017"
 	}
-}```
+}
+```
 ## **Response**
 ```
 {
