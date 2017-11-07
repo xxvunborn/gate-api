@@ -137,8 +137,6 @@ PUT    /api/v1/gates/:id
 DELETE    /api/v1/gates/1
 ```
 ## **Response**
-```
-```
 
 ## KEY
 
