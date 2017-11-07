@@ -2,7 +2,7 @@ class Api::V1::GatesController < ApplicationController
   before_action :set_gate, only: [:show, :update, :destroy]
 
   def index
-    @gates = current_user.gates.all
+    @gates = current.user.gates.all
     render json: @gates
   end
 
@@ -11,7 +11,7 @@ class Api::V1::GatesController < ApplicationController
   end
 
   def create
-    @gate = current_user.gates.new(gate_params)
+    @gate = current.user.gates.new(gate_params)
 
     if @gate.save
       render json: @gate, status: 201
@@ -36,7 +36,7 @@ class Api::V1::GatesController < ApplicationController
   private
 
   def set_gate
-    @gate = current_user.gates.find(params[:id])
+    @gate = current.user.gates.find(params[:id])
   end
 
   def gate_params

@@ -2,7 +2,7 @@ class Api::V1::KeysController < ApplicationController
   before_action :set_key, only: [:show, :update, :destroy]
 
   def index
-    @keys = current_user.gates.find(params[gate_id]).keys
+    @keys = current.user.gates.find(params[:gate_id]).keys
     render json: @keys
   end
 
@@ -11,7 +11,7 @@ class Api::V1::KeysController < ApplicationController
   end
 
   def create
-    @key = current_user.gates.find(params[:gate_id]).key.new(key_params)
+    @key = current.user.gates.find(params[:gate_id]).keys.new(key_params)
 
     if @key.save
       render json: @key, status: 201
@@ -36,10 +36,10 @@ class Api::V1::KeysController < ApplicationController
   private
 
   def set_key
-    @key = current_user.gates.find(params[:gate_id]).keys.find(params[:key_id])
+    @key = current.user.gates.find(params[:gate_id]).keys.find(params[:id])
   end
 
   def key_params
-    params.require(:key).permit(:name)
+    params.require(:key).permit(:name, :user_id, :expired_at)
   end
 end

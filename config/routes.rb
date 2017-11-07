@@ -11,6 +11,9 @@ Rails.application.routes.draw do
           post 'signup', to: 'users#create'
         end
       end
+      resources :gates do
+          resources :keys
+      end
     end
   end
 end

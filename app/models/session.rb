@@ -30,7 +30,7 @@ class Session < ApplicationRecord
   end
 
   def self.with_unexpired_token(token, period)
-    where(token: token).where('created_at >=', period).first
+    where(token: token).where('created_at >= ?', period).first
   end
 
   private

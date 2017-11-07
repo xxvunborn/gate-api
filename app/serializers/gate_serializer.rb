@@ -11,5 +11,5 @@
 #
 
 class GateSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :user_id, :name, :location
 end

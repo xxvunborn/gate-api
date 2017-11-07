@@ -11,10 +11,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-class Key < ApplicationRecord
-  has_secure_token
-
-  belongs_to :gate
-  belongs_to :user
+class KeySerializer < ActiveModel::Serializer
+  attributes :id, :gate_id, :user_id, :name, :token, :expired_at
 end
