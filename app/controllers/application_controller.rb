@@ -6,8 +6,8 @@ class ApplicationController < ActionController::API
     authenticated_token || render_unauthorized('access denied')
   end
 
-  def current_user
-    @current_user ||= authenticated_token
+  def current
+    @current ||= authenticated_token
   end
 
   protected
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
     authenticate_with_http_token do |token, options|
       if user = Session.with_unexpired_token(token, 2.days.ago)
         # Compare the tokens in a time-constant manner, to mitigate timing attacks
-        ActivateSupport::SecurityUtils.secure_compare(
+        ActiveSupport::SecurityUtils.secure_compare(
                        ::Digest::SHA256.hexdigest(token),
                        ::Digest::SHA256.hexdigest(user.token)
         )

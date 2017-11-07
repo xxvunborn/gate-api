@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022200925) do
+ActiveRecord::Schema.define(version: 20171106062125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gates", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gates_on_user_id"
+  end
+
+  create_table "keys", force: :cascade do |t|
+    t.bigint "gate_id"
+    t.bigint "user_id"
+    t.string "name"
+    t.string "token"
+    t.datetime "expired_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gate_id"], name: "index_keys_on_gate_id"
+    t.index ["user_id"], name: "index_keys_on_user_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id"
@@ -32,5 +53,8 @@ ActiveRecord::Schema.define(version: 20171022200925) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "gates", "users"
+  add_foreign_key "keys", "gates"
+  add_foreign_key "keys", "users"
   add_foreign_key "sessions", "users"
 end

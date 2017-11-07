@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one :session
+  has_many :gates
 
   after_create :generate_token
 
