@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: gate-api_production
-  username: gate-api
-  password: <%= ENV['GATE-API_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host:     <%= ENV['DATABASE_ENDPOINT'] %>
+  port:     <%= ENV['DATABASE_PORT'] %>
