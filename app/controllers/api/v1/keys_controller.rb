@@ -40,6 +40,6 @@ class Api::V1::KeysController < ApplicationController
   end
 
   def key_params
-    params.require(:key).permit(:name, :user_id, :expired_at)
+    params.require(:key).permit(:name, :expired_at).merge(user_id: current.user.id)
   end
 end
