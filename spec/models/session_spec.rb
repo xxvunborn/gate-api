@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  token      :string
+#  token      :string           not null
 #  expired_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

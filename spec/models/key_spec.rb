@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  gate_id    :integer
 #  user_id    :integer
-#  name       :string
-#  token      :string
+#  name       :string           not null
+#  token      :string           not null
 #  expired_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

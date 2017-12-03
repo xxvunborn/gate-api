@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20171106062125) do
   enable_extension "plpgsql"
 
   create_table "gates", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.bigint "user_id"
-    t.string "location"
+    t.string "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_gates_on_user_id"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20171106062125) do
   create_table "keys", force: :cascade do |t|
     t.bigint "gate_id"
     t.bigint "user_id"
-    t.string "name"
-    t.string "token"
+    t.string "name", null: false
+    t.string "token", null: false
     t.datetime "expired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171106062125) do
 
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "token"
+    t.string "token", null: false
     t.datetime "expired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20171106062125) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
+    t.string "email", null: false
+    t.string "name", null: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
