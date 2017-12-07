@@ -1,5 +1,8 @@
-class Api::V1::UsersController < ApplicationController
-  skip_before_action :require_login, only: [:create], raise: false
+class Api::V1::UsersController < ActionController::Base
+  skip_before_action :require_login, only: [:create, :index], raise: false
+
+  def index
+  end
 
   def create
     @user = User.new(user_params)

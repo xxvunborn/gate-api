@@ -1,0 +1,7 @@
+<h1> Puertas </h1>
+Seleciona un puerta
+<%= form_tag('/admins/keys', method: :post) do %>
+  <%= select_tag :gate, options_for_select(@gates.collect{ |u| [u.name, u.id] }), :onchange => "this.form.submit();" %>
+  <%= hidden_field_tag 'user_id', :value=> @user_id %>
+  <div><%= submit_tag 'Next' %></div>
+<% end %>

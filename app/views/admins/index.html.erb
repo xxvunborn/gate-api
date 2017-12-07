@@ -1,0 +1,6 @@
+<h1> Usuarios </h1>
+Seleciona un usuario
+<%= form_tag('/admins/gates', method: :post) do %>
+  <%= select_tag :user, options_for_select(@users.collect{ |u| [u.name, u.id] }), :onchange => "this.form.submit();" %>
+  <div><%= submit_tag 'Next' %></div>
+<% end %>
