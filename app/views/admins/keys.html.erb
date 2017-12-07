@@ -1,0 +1,12 @@
+<h1> Crea una nueva llave </h1>
+
+Ingresa los datos:
+</br>
+</br>
+<%= form_tag('/admins/create_key', method: :post) do %>
+  Nombre: <%= text_field_tag :name %> </br>
+  Fecha de expiración: <%= text_field_tag :expired_at %> </br>
+  <%= hidden_field_tag 'user_id', :value=> @user_id %>
+  <%= hidden_field_tag 'gate_id', :value=> @gate_id %>
+  <div><%= submit_tag 'Next' %></div>
+<% end %>

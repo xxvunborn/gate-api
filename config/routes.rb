@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :admins do
+    collection do
+      post :gates
+      post :keys
+      post :create_key
+    end
+  end
+
   namespace :api do
     namespace :v1 do
       resources :sessions, only: [:index, :create] do
